@@ -1,0 +1,82 @@
+// { Driver Code Starts
+//Initial Template for Java
+/*package whatever //do not write package name here */
+
+import java.io.*;
+import java.util.*;
+class GFG {
+	public static void main (String[] args) 
+	{
+	    //taking input using Scanner class
+	    Scanner sc=new Scanner(System.in);
+	    
+	    //taking total count of testcases
+	    int testcases=sc.nextInt();
+	    while(testcases-->0)
+	    {
+	        //taking total number of elements
+	        int number=sc.nextInt();
+	        
+	        //creating an object of class Geeks
+	        Solution obj=new Solution();
+	        
+	        //calling findNthFibonacci() method
+	        //of class Geeks
+	        System.out.println(obj.findNthFibonacci(number));
+	        
+	    }
+	}
+}
+
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Solution
+{
+    //Function to find the nth fibonacci number using bottom-up approach.
+    public long findNthFibonacci(int number)
+    {
+        // Your Code Here
+        int n=number;
+        long [] dp = new long[number+1];
+        dp[0]=0;
+
+        for(int i=1;i<n+1;i++)
+        {
+            if(i<=2)
+            {
+                dp[i]=1;
+            }
+            else
+            {
+            dp[i]=-1;
+            }
+        }
+      
+        // if(dp[n] != -1)
+        // {
+        //   return dp[n];  
+        // }
+        
+        // dp[n]=findNthFibonacci(n-1)+findNthFibonacci(n-2,dp);
+        
+        // return dp[n];
+        return fib(number,dp);
+    }
+ public long fib(int n,long [] dp)
+ {
+
+        if(dp[n] != -1)
+        {
+          return dp[n];  
+        }
+        
+        dp[n]=fib(n-1,dp)+fib(n-2,dp);
+        
+        return dp[n];
+ }
+
+}
+

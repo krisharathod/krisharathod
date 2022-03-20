@@ -1,0 +1,70 @@
+// { Driver Code Starts
+//Initial Template for Java
+/*package whatever //do not write package name here */
+
+import java.io.*;
+import java.util.*;
+class GFG {
+	public static void main (String[] args) 
+	{
+	    //taking input using Scanner class
+	    Scanner sc=new Scanner(System.in);
+	    
+	    //taking total count of testcases
+	    int testcases=sc.nextInt();
+	    while(testcases-->0)
+	    {
+	        //taking total number of elements
+	        int number=sc.nextInt();
+	        
+	        //creating an object of class Geeks
+	        Solution obj=new Solution();
+	        
+	        //calling findNthFibonacci() method
+	        //of class Geeks
+	        System.out.println(obj.findNthFibonacci(number));
+	        
+	    }
+	}
+}
+
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Solution
+{
+    //Function to find the nth fibonacci number using bottom-up approach.
+    public long findNthFibonacci(int number)
+    {
+        // Your Code Here
+        int n=number;
+        long [] dp=new long[number+1];
+        for(int i=0;i<n+1;i++)
+        {
+            dp[n]=-1;
+                    // System.out.println(dp[n]);
+        }
+        // dp[0]=0;
+        // dp[1]=1;
+        // dp[2]=1;
+        // if(n == 0)
+        // return 0;//
+        
+        if(n <= 1)
+        return n;
+        System.out.println(n+" "+dp[n]);
+        if(dp[n] != -1 )
+        {
+                    System.out.println(dp[n]);
+          return dp[n];  
+        }
+       
+        dp[n]=findNthFibonacci(n-1)+findNthFibonacci(n-2);
+        //  System.out.println(dp[n]);
+        return dp[n];
+    }
+
+}
+
